@@ -13,7 +13,7 @@ class Item(Resource):
     parser.add_argument('store_id',
         type=int,
         required=True,
-        help="Every item needs a store id"
+        help="Every item needs a store id."
     )
 
     @jwt_required() #token will be require, can put on all def but troublesome
@@ -62,8 +62,8 @@ class Item(Resource):
         item = ItemModel.find_by_name(name)
         if item:
             item.delete_from_db()
-            return {'message': 'Item deleted'}
-        return {'message': 'Item not found.'}, 404
+        return {'message': 'Item deleted'}
+    #return {'message': 'Item not found.'}, 404
 
     def put(self, name): #UPDATE
         data = Item.parser.parse_args()
