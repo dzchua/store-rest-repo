@@ -11,7 +11,6 @@ from resources.store import Store, StoreList
 
 app = Flask(__name__)
 
-app.config['PROPAGATE_EXCEPTIONS'] = True
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///data.db') #read the first variable for cloud hosting heroku postgre, default: 2nd value for local environment.
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False #to know object changed but not saved in database: turn it off as it is a tracker
 app.secret_key = 'jose'
