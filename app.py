@@ -1,5 +1,5 @@
 import os #read the virtual environment
-import pymysql
+import mysql.connector
 
 from flask import Flask, request
 from flask_restful import Resource, Api, reqparse
@@ -18,7 +18,14 @@ app = Flask(__name__)
 # if uri.startswith("postgres://"):
 #     uri = uri.replace("postgres://", "postgresql://", 1)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:password@127.0.0.1:5000/data'
+
+mydb = mysql.connector.connect(
+  host="localhost",
+  user="yourusername",
+  password="yourpassword"
+)
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://yourusername:yourpassword@127.0.0.1:5000/mydb'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False #to know object changed but not saved in database: turn it off as it is a tracker
 app.secret_key = 'jose'
 api = Api(app)
