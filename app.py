@@ -1,5 +1,6 @@
 import os #read the virtual environment
-import mysql.connector
+import pymysql
+import secrets
 
 from flask import Flask, request
 from flask_restful import Resource, Api, reqparse
@@ -14,18 +15,12 @@ app = Flask(__name__)
 
 #app.config['PROPAGATE_EXCEPTIONS'] = True
 #app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///data.db') #read the first variable for cloud hosting heroku postgre, default: 2nd value for local environment.
-# uri = os.environ.get('DATABASE_URL', 'sqlite:///data.db')
+uri = os.environ.get('CLEARDB_DATABASE_URL', 'sqlite:///data.db')
 # if uri.startswith("postgres://"):
 #     uri = uri.replace("postgres://", "postgresql://", 1)
 
 
-mydb = mysql.connector.connect(
-  host="localhost",
-  user="yourusername",
-  password="yourpassword"
-)
-
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://yourusername:yourpassword@127.0.0.1:5000/mydb'
+app.config['SQLALCHEMY_DATABASE_URI'] = uri
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False #to know object changed but not saved in database: turn it off as it is a tracker
 app.secret_key = 'jose'
 api = Api(app)
