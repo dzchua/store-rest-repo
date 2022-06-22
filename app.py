@@ -17,7 +17,7 @@ app = Flask(__name__)
 # if uri.startswith("postgres://"):
 #     uri = uri.replace("postgres://", "postgresql://", 1)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://dbuser:dbpassword@127.0.0.1:5000/app'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://dbuser:dbpassword@127.0.0.1:5000/data'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False #to know object changed but not saved in database: turn it off as it is a tracker
 app.secret_key = 'jose'
 api = Api(app)
