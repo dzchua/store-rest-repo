@@ -1,4 +1,5 @@
 import os #read the virtual environment
+import pymysql
 
 from flask import Flask, request
 from flask_restful import Resource, Api, reqparse
