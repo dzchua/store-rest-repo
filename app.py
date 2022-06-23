@@ -25,9 +25,9 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False #to know object changed but
 app.secret_key = 'jose'
 api = Api(app)
 
-# @app.before_first_request #create database
-# def create_tables():
-#     db.create_all()
+@app.before_first_request #create database
+def create_tables():
+    db.create_all()
 
 
 #app.config['JWT_AUTH_URL_RULE'] = '/login' # changes /auth to /login
