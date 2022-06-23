@@ -13,14 +13,14 @@ app = Flask(__name__)
 
 app.config['PROPAGATE_EXCEPTIONS'] = True
 #app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///data.db') #read the first variable for cloud hosting heroku postgre, default: 2nd value for local environment.
-uri = os.environ.get('DATABASE_URL', 'sqlite:///data.db')
-if uri.startswith("postgres://"):
-    uri = uri.replace("postgres://", "postgresql://", 1)
+# uri = os.environ.get('DATABASE_URL', 'sqlite:///data.db')
+# if uri.startswith("postgres://"):
+#     uri = uri.replace("postgres://", "postgresql://", 1)
 
 
 
-app.config['SQLALCHEMY_DATABASE_URI'] = uri
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://b89e3f5a3e0ec9:f07d6a69@us-cdbr-east-05.cleardb.net:3306/heroku_75e078fd87a04aa?reconnect=true'
+#app.config['SQLALCHEMY_DATABASE_URI'] = uri
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://b7bd9d0a910ab1:70595c65@us-cdbr-east-05.cleardb.net:3306/heroku_8078c539e7eaafe?reconnect=true'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False #to know object changed but not saved in database: turn it off as it is a tracker
 app.secret_key = 'jose'
 api = Api(app)
