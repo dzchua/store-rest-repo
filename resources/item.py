@@ -36,7 +36,7 @@ class Item(Resource):
         #data = request.get_json() #force: not need content-type header |silent: none
         data = Item.parser.parse_args() #checks for price                 #This is put below because the above code checks for error, if ok, proceed.
 
-        item = ItemModel(name, **data)
+        item = ItemModel(name, data['price'], data['store_id'])
 
         try: #do this if fails to search, then...
             item.save_to_db()
