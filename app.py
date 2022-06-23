@@ -20,7 +20,7 @@ app.config['PROPAGATE_EXCEPTIONS'] = True
 
 
 #app.config['SQLALCHEMY_DATABASE_URI'] = uri
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://b7bd9d0a910ab1:70595c65@us-cdbr-east-05.cleardb.net:3306/heroku_8078c539e7eaafe?reconnect=true'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://b7bd9d0a910ab1:70595c65@us-cdbr-east-05.cleardb.net:3306/heroku_8078c539e7eaafe'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False #to know object changed but not saved in database: turn it off as it is a tracker
 app.secret_key = 'jose'
 api = Api(app)
