@@ -13,8 +13,8 @@ from resources.store import Store, StoreList
 app = Flask(__name__)
 
 app.config['PROPAGATE_EXCEPTIONS'] = True
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///data.db') #read the first variable for cloud hosting heroku postgre, default: 2nd value for local environment.
-uri = os.environ.get('CLEARDB_DATABASE_URL', 'sqlite:///data.db')
+#app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///data.db') #read the first variable for cloud hosting heroku postgre, default: 2nd value for local environment.
+uri = os.environ.get('DATABASE_URL', 'sqlite:///data.db')
 if uri.startswith("postgres://"):
     uri = uri.replace("postgres://", "postgresql://", 1)
 
