@@ -18,14 +18,16 @@ app = Flask(__name__)
 # if uri.startswith("postgres://"):
 #     uri = uri.replace("postgres://", "postgresql://", 1)
 
+@app.before_first_request #create database
+def create_tables():
+    db.create_all()
+
+
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://b89e3f5a3e0ec9:f07d6a69@us-cdbr-east-05.cleardb.net:3306/heroku_75e078fd87a04aa?reconnect=true'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False #to know object changed but not saved in database: turn it off as it is a tracker
 app.secret_key = 'jose'
 api = Api(app)
 
-@app.before_first_request #create database
-def create_tables():
-    db.create_all()
 
 #app.config['JWT_AUTH_URL_RULE'] = '/login' # changes /auth to /login
 jwt = JWT(app, authenticate, identity) # /auth - default
